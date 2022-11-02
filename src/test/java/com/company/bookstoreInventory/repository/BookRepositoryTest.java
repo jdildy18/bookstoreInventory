@@ -1,7 +1,8 @@
 package com.company.bookstoreInventory.repository;
 
-import com.company.bookstoreInventory.model.Publisher;
 import com.company.bookstoreInventory.model.Author;
+import com.company.bookstoreInventory.model.Book;
+import com.company.bookstoreInventory.model.Publisher;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -9,41 +10,35 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.util.Optional;
 
 import static org.junit.Assert.*;
-
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringBootTest
-public class PublisherRepositoryTest {
+public class BookRepositoryTest {
 
     @Autowired
     BookRepository bookRepository;
+
     @Autowired
     AuthorRepository authorRepository;
+
     @Autowired
     PublisherRepository publisherRepository;
 
     @Before
     public void setUp() throws Exception {
+
         bookRepository.deleteAll();
         authorRepository.deleteAll();
         publisherRepository.deleteAll();
 
-
     }
 
     @Test
-    public void addGetDeletePublisher() {
-        Publisher publisher = new Publisher();
-        publisher.setCity("Suffolk");
-        publisher.setEmail("justindildy18@gmail.com");
-        publisher.setName("Justin");
-        publisher.setState("Virginia");
-        publisher.setStreet("700 Park Avenue");
-        publisher.setPhone("999-324-3831");
-        publisher.setPostalCode("23230");
-        publisher = publisherRepository.save(publisher);
+    public void addGetDeleteBook() {
 
         Author author = new Author();
         author.setCity("Norfolk");
@@ -53,23 +48,37 @@ public class PublisherRepositoryTest {
         author.setLastName("Anthony");
         author.setState("California");
         author.setStreet("743 Corprew Aveunue");
-        author.setPhone("84892");
+        author.setPostalCode("84892");
         author = authorRepository.save(author);
 
-
+        Publisher publisher = new Publisher();
+        publisher.setCity("Norfolk");
+        publisher.setPostalCode("84783");
+        publisher.setPhone("947-930-8343");
+        publisher.setState("Texas");
+        publisher.setName("Brandon");
+        publisher.setEmail("3adjd202i@gmail.com");
+        publisher.setStreet("332 Park Avenue");
         publisher = publisherRepository.save(publisher);
 
-        Optional<Publisher> publisherOptional = publisherRepository.findById(publisher.getId());
+        Book book = new Book();
+        book.setPublisherId(publisher.getId());
+        book.setAuthorId(author.getId());
+        book.setIsbn("97654356846");
+        book.setTitle("The Greatest Race");
+        book.setPublishDate(LocalDate.of(2002, 12, 23));
+        book.setPrice(new BigDecimal("12.98"));
+        book = bookRepository.save(book);
 
-        assertEquals(publisherOptional.get(), publisher);
+        Optional<Book> book1 = bookRepository.findById(book.getId());
 
-        publisherRepository.deleteById(publisher.getId());
+        assertEquals(book1.get(), book);
 
-        publisherOptional = publisherRepository.findById(publisher.getId());
+        bookRepository.deleteById(book.getId());
 
-        assertFalse(publisherOptional.isPresent());
+        book1 = bookRepository.findById(book.getId());
 
-
-
+        assertFalse(book1.isPresent());
     }
+
 }

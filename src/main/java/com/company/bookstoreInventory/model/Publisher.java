@@ -38,14 +38,14 @@ public class Publisher {
         this.id = id;
     }
 
-    public Set<Book> getBooks() {
-        return books;
-    }
+//    public Set<Book> getBooks() {
+//        return books;
+//    }
 
-    public void setBooks(Set<Book> books) {
-        this.books = books;
-    }
-
+//    public void setBooks(Set<Book> books) {
+//        this.books = books;
+//    }
+//
     public String getName() {
         return name;
     }
@@ -110,12 +110,12 @@ public class Publisher {
         if (this == o) return true;
         if (!(o instanceof Publisher)) return false;
         Publisher publisher = (Publisher) o;
-        return getId() == publisher.getId() && Objects.equals(getBooks(), publisher.getBooks()) && Objects.equals(getName(), publisher.getName()) && Objects.equals(getStreet(), publisher.getStreet()) && Objects.equals(getCity(), publisher.getCity()) && Objects.equals(getState(), publisher.getState()) && Objects.equals(getPostalCode(), publisher.getPostalCode()) && Objects.equals(getPhone(), publisher.getPhone()) && Objects.equals(getEmail(), publisher.getEmail());
+        return getId() == publisher.getId() /*&& Objects.equals(getBooks(), publisher.getBooks())*/ && Objects.equals(getName(), publisher.getName()) && Objects.equals(getStreet(), publisher.getStreet()) && Objects.equals(getCity(), publisher.getCity()) && Objects.equals(getState(), publisher.getState()) && Objects.equals(getPostalCode(), publisher.getPostalCode()) && Objects.equals(getPhone(), publisher.getPhone()) && Objects.equals(getEmail(), publisher.getEmail());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getId(), getBooks(), getName(), getStreet(), getCity(), getState(), getPostalCode(), getPhone(), getEmail());
+        return Objects.hash(getId()/*, getBooks()*/, getName(), getStreet(), getCity(), getState(), getPostalCode(), getPhone(), getEmail());
     }
 
 
@@ -126,7 +126,7 @@ public class Publisher {
     public String toString() {
         return "Publisher{" +
                 "id=" + id +
-                ", books=" + books +
+               /* ", books=" + books + */
                 ", name='" + name + '\'' +
                 ", street='" + street + '\'' +
                 ", city='" + city + '\'' +

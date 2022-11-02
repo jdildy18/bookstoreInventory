@@ -19,8 +19,6 @@ public class Author implements Serializable {
 
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
     @JoinColumn(name = "authorId")
-
-
     private Set<Book> books = new HashSet<>();
 
     private String firstName;
@@ -43,14 +41,14 @@ public class Author implements Serializable {
         this.id = id;
     }
 
-    public Set<Book> getBooks() {
-        return books;
-    }
+//   // public Set<Book> getBooks() {
+//        return books;
+//    }
 
-    public void setBooks(Set<Book> books) {
-        this.books = books;
-    }
-
+//    public void setBooks(Set<Book> books) {
+//        this.books = books;
+//    }
+//
     public String getFirstName() {
         return firstName;
     }
@@ -123,12 +121,12 @@ public class Author implements Serializable {
         if (this == o) return true;
         if (!(o instanceof Author)) return false;
         Author author = (Author) o;
-        return getId() == author.getId() && Objects.equals(getBooks(), author.getBooks()) && Objects.equals(getFirstName(), author.getFirstName()) && Objects.equals(getLastName(), author.getLastName()) && Objects.equals(getStreet(), author.getStreet()) && Objects.equals(getCity(), author.getCity()) && Objects.equals(getState(), author.getState()) && Objects.equals(getPostalCode(), author.getPostalCode()) && Objects.equals(getPhone(), author.getPhone()) && Objects.equals(getEmail(), author.getEmail());
+        return getId() == author.getId() /*&& Objects.equals(getBooks(), author.getBooks())*/ && Objects.equals(getFirstName(), author.getFirstName()) && Objects.equals(getLastName(), author.getLastName()) && Objects.equals(getStreet(), author.getStreet()) && Objects.equals(getCity(), author.getCity()) && Objects.equals(getState(), author.getState()) && Objects.equals(getPostalCode(), author.getPostalCode()) && Objects.equals(getPhone(), author.getPhone()) && Objects.equals(getEmail(), author.getEmail());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getId(), getBooks(), getFirstName(), getLastName(), getStreet(), getCity(), getState(), getPostalCode(), getPhone(), getEmail());
+        return Objects.hash(getId()/*.getBooks()/*/, getFirstName(), getLastName(), getStreet(), getCity(), getState(), getPostalCode(), getPhone(), getEmail());
     }
 
 
@@ -138,7 +136,7 @@ public class Author implements Serializable {
     public String toString() {
         return "Author{" +
                 "id=" + id +
-                ", books=" + books +
+                /*", books=" + books +" */
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", street='" + street + '\'' +
