@@ -40,7 +40,7 @@ public class AuthorRepositoryTest {
         author.setFirstName("Jaylen");
         author.setLastName("Anthony");
         author.setState("CA");
-        author.setStreet("743 Corprew Aveunue");
+        author.setStreet("743 Corprew Avenue");
         author.setPostalCode("84892");
         author = authorRepository.save(author);
 

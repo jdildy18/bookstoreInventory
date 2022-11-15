@@ -32,11 +32,11 @@ public class PublisherController {
     @ResponseStatus(HttpStatus.CREATED)
     public Publisher addPublisher(@RequestBody Publisher publisher) { return repo.save(publisher); }
 
-    @PutMapping("/publisher")
+    @PutMapping("/publishers")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void updatePublisher(@RequestBody Publisher publisher) { repo.save(publisher);}
 
-    @DeleteMapping("/publisher/{id}")
+    @DeleteMapping("/publishers/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deletePublisher(@PathVariable int id) { repo.deleteById(id); }
 }

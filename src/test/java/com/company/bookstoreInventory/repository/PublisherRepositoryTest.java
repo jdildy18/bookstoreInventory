@@ -1,7 +1,6 @@
 package com.company.bookstoreInventory.repository;
 
 import com.company.bookstoreInventory.model.Publisher;
-import com.company.bookstoreInventory.model.Author;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -46,7 +45,6 @@ public class PublisherRepositoryTest {
         publisher = publisherRepository.save(publisher);
 
 
-        publisher = publisherRepository.save(publisher);
 
         Optional<Publisher> publisherOptional = publisherRepository.findById(publisher.getId());
 
