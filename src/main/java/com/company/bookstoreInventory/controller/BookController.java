@@ -1,5 +1,6 @@
 package com.company.bookstoreInventory.controller;
 
+import com.company.bookstoreInventory.model.Author;
 import com.company.bookstoreInventory.model.Book;
 import com.company.bookstoreInventory.repository.BookRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +19,7 @@ public class BookController {
     @GetMapping("/books")
     public List<Book> getBooks() { return repo.findAll(); }
 
-    @GetMapping("/books{id}")
+    @GetMapping("/books/{id}")
     public Book getBookById(@PathVariable int id) {
         Optional<Book> returnVal = repo.findById(id);
         if(returnVal.isPresent()) {
@@ -40,4 +41,13 @@ public class BookController {
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deleteBook(@PathVariable int id) { repo.deleteById(id); }
 
+    @GetMapping("/books/author/{authorId}")
+    public Book FindAllBooksByAuthorId(@PathVariable int authorId) {
+        Optional<Book> returnVal = repo.findById(authorId);
+        if(returnVal.isPresent()) {
+            return returnVal.get();
+        } else {
+            return null;
+        }
+    }
 }

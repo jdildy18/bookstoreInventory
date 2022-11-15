@@ -30,10 +30,9 @@ public class Author implements Serializable {
     private String phone;
     private String email;
 
+    // GETTERS AND SETTERS
 
-    // GETTERS AND SETTERS //
-
-   public int getId() {
+    public int getId() {
         return id;
     }
 
@@ -41,14 +40,6 @@ public class Author implements Serializable {
         this.id = id;
     }
 
-//   // public Set<Book> getBooks() {
-//        return books;
-//    }
-
-//    public void setBooks(Set<Book> books) {
-//        this.books = books;
-//    }
-//
     public String getFirstName() {
         return firstName;
     }
@@ -114,37 +105,29 @@ public class Author implements Serializable {
     }
 
 
-    // HASHCODE AND EQUALS //
+    // HASHCODE AND EQUALS
+
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof Author)) return false;
         Author author = (Author) o;
-        return getId() == author.getId() /*&& Objects.equals(getBooks(), author.getBooks())*/ && Objects.equals(getFirstName(), author.getFirstName()) && Objects.equals(getLastName(), author.getLastName()) && Objects.equals(getStreet(), author.getStreet()) && Objects.equals(getCity(), author.getCity()) && Objects.equals(getState(), author.getState()) && Objects.equals(getPostalCode(), author.getPostalCode()) && Objects.equals(getPhone(), author.getPhone()) && Objects.equals(getEmail(), author.getEmail());
+        return getId() == author.getId() &&
+                Objects.equals(getFirstName(), author.getFirstName()) &&
+                Objects.equals(getLastName(), author.getLastName()) &&
+                Objects.equals(getStreet(), author.getStreet()) &&
+                Objects.equals(getCity(), author.getCity()) &&
+                Objects.equals(getState(), author.getState()) &&
+                Objects.equals(getPostalCode(), author.getPostalCode()) &&
+                Objects.equals(getPhone(), author.getPhone()) &&
+                Objects.equals(getEmail(), author.getEmail());
     }
 
     @Override
-    public int hashCode() {
-        return Objects.hash(getId()/*.getBooks()/*/, getFirstName(), getLastName(), getStreet(), getCity(), getState(), getPostalCode(), getPhone(), getEmail());
-    }
+    public int hashCode() { return Objects.hash(getId(), getFirstName(), getLastName(), getStreet(), getCity(), getState(), getPostalCode(), getPhone(), getEmail()); }
 
 
-    // TO STRING //
+    // TO STRING
 
-    @Override
-    public String toString() {
-        return "Author{" +
-                "id=" + id +
-                /*", books=" + books +" */
-                ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", street='" + street + '\'' +
-                ", city='" + city + '\'' +
-                ", state='" + state + '\'' +
-                ", postalCode='" + postalCode + '\'' +
-                ", phone='" + phone + '\'' +
-                ", email='" + email + '\'' +
-                '}';
-    }
 }
